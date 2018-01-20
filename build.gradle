@@ -6,6 +6,16 @@
  * user guide available at https://docs.gradle.org/4.4.1/userguide/tutorial_java_projects.html
  */
 
+buildscript {
+        dependencies {
+                classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
+        }
+
+        repositories {
+                jcenter()
+        }
+}
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
@@ -25,7 +35,7 @@ repositories {
 }
 
 dependencies {
-        // This dependency is found on compile classpath of this component and consumers.
+        compile files("${System.properties['java.home']}/../lib/packager.jar")
         compile group: 'com.google.guava', name: 'guava', version: '23.0'
         compile group: 'com.h2database', name: 'h2', version: '1.4.196'
         compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
@@ -36,6 +46,17 @@ dependencies {
         testCompile 'junit:junit:4.12'
 }
 
+sourceSets {
+  main {
+    resources {
+        srcDirs = ["src/main/java", "src/main/resources"]
+        //includes = ["**/*.fxml"]
+    }
+  }
+}
+
+apply plugin: 'javafx-gradle-plugin'
+
 /* TODO
 jar {
         manifest {
@@ -45,9 +66,87 @@ jar {
 }
 */
 
+// configure javafx-gradle-plugin
+// for all available settings please look at the class "JavaFXGradlePluginExtension"
+jfx {
+    verbose = true
+    mainClass = 'org.jettcompany.customermanagement.Main'
+    jfxAppOutputDir = "build/jfx/app"
+    jfxMainAppJarName = "project-jfx.jar"
+    deployDir = "src/main/deploy"
+    useEnvironmentRelativeExecutables = true
+    libFolderName = "lib"
+    
+    // gradle jfxJar
+    css2bin = false
+    preLoader = null // String
+    updateExistingJar = false
+    allPermissions = false
+    manifestAttributes = null // Map<String, String>
+    addPackagerJar = true
+    copyAdditionalAppResourcesToJar = false
+    skipCopyingDependencies = false
+    useLibFolderContentForManifestClasspath = false
+    fixedManifestClasspath = null
+
+    // gradle jfxNative
+    identifier = "75c5f555-3096-4dd0-bdd3-80732ffcf014"  // String - setting this for windows-bundlers makes it possible to generate upgradeable installers (using same GUID)
+    vendor = "Simon Rainer"
+    nativeOutputDir = "build/jfx/native"
+    bundler = "ALL" // set this to some specific, if your don't want all bundlers running, examples "windows.app", "jnlp", ...
+    jvmProperties = null // Map<String, String>
+    jvmArgs = null // List<String>
+    userJvmArgs = null // Map<String, String>
+    launcherArguments = null // List<String>
+    nativeReleaseVersion = "1.0"
+    needShortcut = true
+    needMenu = true
+    appName = "Jett2" // this is used for files below "src/main/deploy", e.g. "src/main/deploy/package/windows/project.ico"
+    fileAssociations = null // List<Map<String, Object>>
+    noBlobSigning = false // when using bundler "jnlp", you can choose to NOT use blob signing
+    customBundlers = null // List<String>
+    failOnError = false
+    onlyCustomBundlers = false
+    skipJNLP = false
+    skipNativeVersionNumberSanitizing = false // anything than numbers or dots are removed
+    additionalJarsignerParameters = null // List<String>
+    skipMainClassScanning = false // set to true might increase build-speed
+    
+    skipNativeLauncherWorkaround124 = false
+    skipNativeLauncherWorkaround167 = false
+    skipNativeLauncherWorkaround205 = false
+    skipJNLPRessourcePathWorkaround182 = false
+    skipSigningJarFilesJNLP185 = false
+    skipSizeRecalculationForJNLP185 = false
+    skipMacBundlerWorkaround = false
+    
+    // gradle jfxRun
+    runJavaParameter = null // String
+    runAppParameter = null // String
+
+    // per default the outcome of the gradle "jarTask" will be used, set this to specify otherwise (like proguard-output)
+    alternativePathToJarFile = null // String
+    
+    // to disable patching of ant-javafx.jar, set this to false
+    usePatchedJFXAntLib = true
+    
+    // making it able to support absolute paths, defaults to "false" for maintaining old behaviour
+    checkForAbsolutePaths = false
+    
+    // gradle jfxGenerateKeyStore
+    keyStore = "src/main/deploy/keystore.jks"
+    keyStoreAlias = "myalias"
+    keyStorePassword = "password"
+    keyPassword = null // will default to keyStorePassword
+    keyStoreType = "jks"
+    overwriteKeyStore = false
+    
+    certDomain = null // required
+    certOrgUnit = null // defaults to "none"
+    certOrg = null // required
+    certState = null // required
+    certCountry = null // required
+}
+
 // Define the main class for the application
 mainClassName = 'org.jettcompany.customermanagement.Main'
-
-run {
-    systemProperty "rootFolder", "/proj/i2expert/vy37bypi/JettWorkingDir"
-}

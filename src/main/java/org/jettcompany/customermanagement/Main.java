@@ -20,7 +20,15 @@ public class Main extends Application {
     private Stage primaryStage;
 
     public static void main(String[] args) {
-        ROOT_FOLDER = System.getProperty("rootFolder");
+        ROOT_FOLDER = System.getProperty("customerManagementRootFolder");
+        if (ROOT_FOLDER == null) {
+            logger.info("No system property customerManagementRootFolder found. Looking at environment variables.");
+            ROOT_FOLDER = System.getenv("customerManagementRootFolder");
+            if (ROOT_FOLDER == null) {
+                logger.info("No environment variable was found either. Using default value.");
+                ROOT_FOLDER = "~/Kundenverwaltung";
+            }
+        }
         logger.info(String.format("Root folder: %s", ROOT_FOLDER));
 
         boolean databaseExists = Database.doesCustomerTableExist();
