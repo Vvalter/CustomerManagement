@@ -47,3 +47,7 @@ jar {
 
 // Define the main class for the application
 mainClassName = 'org.jettcompany.customermanagement.Main'
+
+run {
+    systemProperty "rootFolder", "/proj/i2expert/vy37bypi/JettWorkingDir"
+}
