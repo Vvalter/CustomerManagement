@@ -15,20 +15,25 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class Main extends Application {
+    private static final String ROOT_FOLDER_KEY = "customerManagementRootFolder";
     public static String ROOT_FOLDER;
+    static {
+        ROOT_FOLDER = System.getProperty(ROOT_FOLDER_KEY);
+        if (ROOT_FOLDER == null) {
+            System.err.println("No system property customerManagementRootFolder found. Looking at environment variables.");
+            ROOT_FOLDER = System.getenv(ROOT_FOLDER_KEY);
+            if (ROOT_FOLDER == null) {
+                System.err.println("No environment variable was found either. Using default value.");
+                ROOT_FOLDER = System.getenv("userprofile") + "/Kundenverwaltung";
+            }
+            System.setProperty(ROOT_FOLDER_KEY, ROOT_FOLDER);
+        }
+
+    }
     private static Logger logger = LogManager.getLogger();
     private Stage primaryStage;
 
     public static void main(String[] args) {
-        ROOT_FOLDER = System.getProperty("customerManagementRootFolder");
-        if (ROOT_FOLDER == null) {
-            logger.info("No system property customerManagementRootFolder found. Looking at environment variables.");
-            ROOT_FOLDER = System.getenv("customerManagementRootFolder");
-            if (ROOT_FOLDER == null) {
-                logger.info("No environment variable was found either. Using default value.");
-                ROOT_FOLDER = "~/Kundenverwaltung";
-            }
-        }
         logger.info(String.format("Root folder: %s", ROOT_FOLDER));
 
         boolean databaseExists = Database.doesCustomerTableExist();
