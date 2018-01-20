@@ -17,14 +17,16 @@ import java.util.Locale;
 public class Main extends Application {
     private static final String ROOT_FOLDER_KEY = "customerManagementRootFolder";
     public static String ROOT_FOLDER;
+
     static {
         ROOT_FOLDER = System.getProperty(ROOT_FOLDER_KEY);
         if (ROOT_FOLDER == null) {
-            System.err.println("No system property customerManagementRootFolder found. Looking at environment variables.");
+            System.err.println("No system property customerManagementRootFolder found. Looking at environment " +
+                    "variables.");
             ROOT_FOLDER = System.getenv(ROOT_FOLDER_KEY);
             if (ROOT_FOLDER == null) {
                 System.err.println("No environment variable was found either. Using default value.");
-                ROOT_FOLDER = System.getenv("userprofile") + "/Kundenverwaltung";
+                ROOT_FOLDER = System.getProperty("user.home") + "/Kundenverwaltung";
             }
             System.setProperty(ROOT_FOLDER_KEY, ROOT_FOLDER);
         }

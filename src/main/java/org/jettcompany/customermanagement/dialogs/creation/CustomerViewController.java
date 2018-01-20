@@ -105,8 +105,7 @@ public class CustomerViewController {
         customerKeysToTextFields.putAll(ImmutableMap.of(
                 Customer.TELEPHONE_COMPANY, this.phoneCompanyField,
                 Customer.TELEPHONE_MOBILE, this.phoneMobileField,
-                Customer.TELEPHONE_PRIVATE, this.phonePrivateField,
-                Customer.TELEPHONE_FAX, this.phoneFaxField));
+                Customer.TELEPHONE_PRIVATE, this.phonePrivateField));
 
         customerKeysToTextFields.putAll(ImmutableMap.of(
                 Customer.ADDRESS_COMPANY, this.addressCompanyField,

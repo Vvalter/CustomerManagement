@@ -21,7 +21,6 @@ public class Customer {
     public static final String TELEPHONE_COMPANY = "Telefon_Geschäftlich";
     public static final String TELEPHONE_PRIVATE = "Telefon_Privat";
     public static final String TELEPHONE_MOBILE = "Telefon_Mobil";
-    public static final String TELEPHONE_FAX = "Telefon_Fax";
     public static final String PRIMARY_WEBSITE = "Webseite_1";
     public static final String WEBSITE2 = "Webseite_2";
     public static final String WEBSITE3 = "Webseite_3";
@@ -29,6 +28,12 @@ public class Customer {
     public static final String ADDRESS_SHIPPING = "Lieferadresse";
     public static final String ADDRESS_BILLING = "Rechnungsadresse";
     public static final String ADDRESS_PRIVATE = "Adresse_Privat";
+
+    public static final String PLACE_HOLDER = "Additional1";
+    public static final String PLACE_HOLDER1 = "Additional2";
+    public static final String PLACE_HOLDER2 = "Additional3";
+    public static final String PLACE_HOLDER3 = "Additional4";
+    public static final String PLACE_HOLDER4 = "Additional5";
 
     public static final String COMPANY_DIVISION = "Bereich";
     public static final String STATE = "Bundesland";
@@ -38,9 +43,10 @@ public class Customer {
     public static final String UUID_COLUMN = "id";
 
     public static final List<String> stringColumnNames = Collections.unmodifiableList(ImmutableList.of(COMPANY_NAME,
-            NAME, POSITION, NOTES, PRIMARY_EMAIL, TELEPHONE_FAX,
-            EMAIL2, EMAIL3, TELEPHONE_COMPANY, TELEPHONE_PRIVATE, TELEPHONE_MOBILE, PRIMARY_WEBSITE,
-            WEBSITE2, WEBSITE3, ADDRESS_COMPANY, ADDRESS_SHIPPING, ADDRESS_BILLING, ADDRESS_PRIVATE));
+            NAME, POSITION, NOTES, PRIMARY_EMAIL, EMAIL2, EMAIL3, TELEPHONE_COMPANY, TELEPHONE_PRIVATE,
+            TELEPHONE_MOBILE, PRIMARY_WEBSITE, WEBSITE2, WEBSITE3, ADDRESS_COMPANY, ADDRESS_SHIPPING,
+            ADDRESS_BILLING, ADDRESS_PRIVATE, PLACE_HOLDER, PLACE_HOLDER1, PLACE_HOLDER2, PLACE_HOLDER3,
+            PLACE_HOLDER4));
 
     private static final List<String> filterPropertiesColumnNames = Collections.unmodifiableList(ImmutableList.of
             (COMPANY_DIVISION, STATE, COUNTRY, CITY));
