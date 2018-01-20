@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.jettcompany.customermanagement.dialogs.stateselection.DeutschlandController?>
+<DialogPane headerText="Filter auswählen" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.jettcompany.customermanagement.dialogs.creation.CustomerFilterController">
+    <content>
+        <BorderPane>
+            <center>
+                <GridPane alignment="center" hgap="15.0" maxHeight="Infinity" maxWidth="Infinity" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints/>
+                        <ColumnConstraints/>
+                        <ColumnConstraints/>
+                        <ColumnConstraints/>
+                    </columnConstraints>
+                    <padding>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+                    </padding>
+                    <Label text="Bereich" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <ComboBox fx:id="divisionComboBox" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <Label text="Land" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <ComboBox fx:id="countryComboBox" GridPane.columnIndex="2" GridPane.halignment="LEFT"
+                              GridPane.hgrow="ALWAYS" GridPane.rowIndex="3"/>
+                    <Label text="Bundesland/Kanton" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <ComboBox fx:id="stateComboBox" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS"
+                              GridPane.rowIndex="4"/>
+
+                    <Label text="Stadt" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                    <TextField fx:id="citySearchBar" GridPane.rowIndex="6" GridPane.columnIndex="1"
+                               GridPane.columnSpan="2"/>
+                    <ListView fx:id="citiesTableView" GridPane.columnIndex="1" GridPane.rowIndex="7"
+                              GridPane.columnSpan="2" maxHeight="200"/>
+                </GridPane>
+            </center>
+            <right>
+                <DeutschlandController fx:id="deutschlandController"/>
+            </right>
+        </BorderPane>
+    </content>
+</DialogPane>

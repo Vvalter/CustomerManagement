@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<?import org.jettcompany.customermanagement.dialogs.LimitedTextField?>
+<?import org.jettcompany.customermanagement.dialogs.LimitedTextArea?>
+<DialogPane headerText="Visitenkarte" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.jettcompany.customermanagement.dialogs.creation.CustomerViewController">
+    <content>
+        <SplitPane dividerPositions="0.5">
+            <GridPane alignment="center" hgap="15.0" maxHeight="Infinity" maxWidth="Infinity" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints hgrow="ALWAYS" />
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
+                <children>
+                    <Label text="Bereich" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <ComboBox fx:id="divisionComboBox" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+
+                    <Label text="Land" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <ComboBox fx:id="countryComboBox" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+
+                    <Label text="Bundesland/Kanton" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <ComboBox fx:id="stateComboBox" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+
+                    <Label text="Name" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                    <LimitedTextField limit="255" fx:id="personNameField" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+                    <Label text="Firmenname" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                    <LimitedTextField limit="255" fx:id="nameField" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+
+                    <Label text="Stadt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                    <LimitedTextField limit="255" fx:id="cityField" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+
+                    <Label text="Postleitzahl" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                    <LimitedTextField limit="255" fx:id="plzField" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+
+                    <Label text="Adresse" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                    <LimitedTextField limit="255" fx:id="addressField" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+
+                    <Label text="Telefon" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                    <LimitedTextField limit="255" fx:id="telephoneField" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                </children>
+                <padding>
+                    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                </padding>
+            </GridPane>
+            <GridPane alignment="center" hgap="10" maxHeight="Infinity" maxWidth="Infinity" vgap="10">
+                <Label text="Bemerkungen" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <LimitedTextArea limit="5000" fx:id="notesArea" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints vgrow="ALWAYS" />
+            </rowConstraints>
+            </GridPane>
+        </SplitPane>
+    </content>
+</DialogPane>
