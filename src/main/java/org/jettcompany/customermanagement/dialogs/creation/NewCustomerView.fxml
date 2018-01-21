@@ -1,130 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DialogPane?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import org.jettcompany.customermanagement.dialogs.helper.LabeledSeparator?>
+<?import org.jettcompany.customermanagement.dialogs.LimitedTextField?>
+<?import org.jettcompany.customermanagement.dialogs.LimitedTextArea?>
 <DialogPane headerText="Visitenkarte" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-			fx:controller="org.jettcompany.customermanagement.dialogs.creation.CustomerViewController">
-	<content>
-		<SplitPane dividerPositions="0.35">
-			<GridPane hgap="15.0" vgap="10">
-				<padding>
-					<Insets top="15" right="15" bottom="15" left="15"/>
-				</padding>
-				<Label text="Firmenname:" GridPane.rowIndex="0"/>
-				<TextField fx:id="companyNameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-				<Label text="Name:" GridPane.rowIndex="1"/>
-				<TextField fx:id="personNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-				<Label text="Position:" GridPane.rowIndex="2"/>
-				<TextField fx:id="positionField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            fx:controller="org.jettcompany.customermanagement.dialogs.creation.CustomerViewController">
+    <content>
+        <SplitPane dividerPositions="0.35">
+            <GridPane hgap="15.0" vgap="10">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+                <Label text="Firmenname:" GridPane.rowIndex="0"/>
+                <LimitedTextField fx:id="companyNameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label text="Name:" GridPane.rowIndex="1"/>
+                <LimitedTextField fx:id="personNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="Position:" GridPane.rowIndex="2"/>
+                <LimitedTextField fx:id="positionField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-				<Separator GridPane.columnSpan="2" GridPane.rowIndex="3"/>
+                <Separator GridPane.columnSpan="2" GridPane.rowIndex="3"/>
 
-				<Label text="Bereich:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-				<ComboBox fx:id="divisionComboBox" GridPane.columnIndex="1" GridPane.rowIndex="4" maxWidth="Infinity"/>
+                <Label text="Bereich:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <ComboBox fx:id="divisionComboBox" GridPane.columnIndex="1" GridPane.rowIndex="4" maxWidth="Infinity"/>
 
-				<Label text="Land:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-				<ComboBox fx:id="countryComboBox" GridPane.columnIndex="1" maxWidth="Infinity" GridPane.rowIndex="5"/>
+                <Label text="Land:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <ComboBox fx:id="countryComboBox" GridPane.columnIndex="1" maxWidth="Infinity" GridPane.rowIndex="5"/>
 
-				<Label text="Bundesland:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-				<ComboBox fx:id="stateComboBox" GridPane.columnIndex="1" maxWidth="Infinity" GridPane.rowIndex="6"/>
+                <Label text="Bundesland:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <ComboBox fx:id="stateComboBox" GridPane.columnIndex="1" maxWidth="Infinity" GridPane.rowIndex="6"/>
 
-				<Label text="Stadt:" GridPane.rowIndex="7"/>
-				<TextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                <Label text="Stadt:" GridPane.rowIndex="7"/>
+                <LimitedTextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
 
-				<LabeledSeparator text="Email Adressen   " GridPane.rowIndex="8" GridPane.columnSpan="2"/>
-				<TabPane GridPane.columnSpan="2" GridPane.rowIndex="9">
-					<Tab text="Email">
-						<TextField fx:id="email1Field"/>
-					</Tab>
-					<Tab text="Email2">
-						<TextField fx:id="email2Field"/>
-					</Tab>
-					<Tab text="Email3">
-						<TextField fx:id="email3Field"/>
-					</Tab>
-				</TabPane>
+                <LabeledSeparator text="Email Adressen   " GridPane.rowIndex="8" GridPane.columnSpan="2"/>
+                <TabPane GridPane.columnSpan="2" GridPane.rowIndex="9">
+                    <Tab text="Email">
+                        <LimitedTextField fx:id="email1Field"/>
+                    </Tab>
+                    <Tab text="Email2">
+                        <LimitedTextField fx:id="email2Field"/>
+                    </Tab>
+                    <Tab text="Email3">
+                        <LimitedTextField fx:id="email3Field"/>
+                    </Tab>
+                </TabPane>
 
-				<LabeledSeparator text="Webseiten   " GridPane.rowIndex="10" GridPane.columnSpan="2"/>
-				<TabPane GridPane.columnSpan="2" GridPane.rowIndex="11">
-					<Tab text="Webseite">
-						<TextField fx:id="website1Field"/>
-					</Tab>
-					<Tab text="Webseite2">
-						<TextField fx:id="website2Field"/>
-					</Tab>
-					<Tab text="Webseite3">
-						<TextField fx:id="website3Field"/>
-					</Tab>
-				</TabPane>
+                <LabeledSeparator text="Webseiten   " GridPane.rowIndex="10" GridPane.columnSpan="2"/>
+                <TabPane GridPane.columnSpan="2" GridPane.rowIndex="11">
+                    <Tab text="Webseite">
+                        <LimitedTextField fx:id="website1Field"/>
+                    </Tab>
+                    <Tab text="Webseite2">
+                        <LimitedTextField fx:id="website2Field"/>
+                    </Tab>
+                    <Tab text="Webseite3">
+                        <LimitedTextField fx:id="website3Field"/>
+                    </Tab>
+                </TabPane>
 
-				<LabeledSeparator text="Telefonnummern   " GridPane.rowIndex="12" GridPane.columnSpan="2"/>
-				<TabPane GridPane.columnSpan="2" GridPane.rowIndex="13" tabClosingPolicy="UNAVAILABLE">
-					<Tab text="Geschäftlich">
-						<TextField fx:id="phoneCompanyField"/>
-					</Tab>
+                <LabeledSeparator text="Telefonnummern   " GridPane.rowIndex="12" GridPane.columnSpan="2"/>
+                <TabPane GridPane.columnSpan="2" GridPane.rowIndex="13" tabClosingPolicy="UNAVAILABLE">
+                    <Tab text="Geschäftlich">
+                        <LimitedTextField fx:id="phoneCompanyField"/>
+                    </Tab>
 
-					<Tab text="Privat">
-						<TextField fx:id="phonePrivateField"/>
-					</Tab>
-					<Tab text="Mobil">
-						<TextField fx:id="phoneMobileField"/>
-					</Tab>
-					<Tab text="Fax">
-						<TextField fx:id="phoneFaxField"/>
-					</Tab>
-				</TabPane>
-				<columnConstraints>
-					<ColumnConstraints/>
-					<ColumnConstraints maxWidth="Infinity" hgrow="ALWAYS"/>
-				</columnConstraints>
+                    <Tab text="Privat">
+                        <LimitedTextField fx:id="phonePrivateField"/>
+                    </Tab>
+                    <Tab text="Mobil">
+                        <LimitedTextField fx:id="phoneMobileField"/>
+                    </Tab>
+                    <Tab text="Fax">
+                        <LimitedTextField fx:id="phoneFaxField"/>
+                    </Tab>
+                </TabPane>
+                <columnConstraints>
+                    <ColumnConstraints/>
+                    <ColumnConstraints maxWidth="Infinity" hgrow="ALWAYS"/>
+                </columnConstraints>
 
-			</GridPane>
-			<GridPane alignment="center" hgap="10" vgap="15">
-				<LabeledSeparator text="Adressen   " GridPane.columnSpan="2" GridPane.rowIndex="1"/>
-				<TabPane GridPane.columnSpan="2" GridPane.rowIndex="1" tabClosingPolicy="UNAVAILABLE">
-					<Tab text="Geschäftlich">
-						<TextArea fx:id="addressCompanyField" prefRowCount="5"/>
-					</Tab>
-					<Tab text="Lieferadresse">
-						<TextArea fx:id="addressShippingField" prefRowCount="5"/>
-					</Tab>
-					<Tab text="Rechnungsadresse">
-						<TextArea fx:id="addressBillingField" prefRowCount="5"/>
-					</Tab>
-					<Tab text="Privatadresse">
-						<TextArea fx:id="addressPrivateField" prefRowCount="5"/>
-					</Tab>
-				</TabPane>
-				<padding>
-					<Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-				</padding>
-				<Label text="Bemerkungen" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-				<TextArea fx:id="notesArea" maxHeight="Infinity" maxWidth="Infinity" GridPane.columnIndex="0"
-						  GridPane.rowIndex="3"/>
-				<columnConstraints>
-					<ColumnConstraints hgrow="ALWAYS" maxWidth="Infinity"/>
-				</columnConstraints>
-				<rowConstraints>
-					<RowConstraints/>
-					<RowConstraints/>
-					<RowConstraints maxHeight="Infinity" vgrow="ALWAYS"/>
-				</rowConstraints>
-				<padding>
-					<Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-				</padding>
-			</GridPane>
-		</SplitPane>
-	</content>
+            </GridPane>
+            <GridPane alignment="center" hgap="10" vgap="15">
+                <LabeledSeparator text="Adressen   " GridPane.columnSpan="2" GridPane.rowIndex="1"/>
+                <TabPane GridPane.columnSpan="2" GridPane.rowIndex="1" tabClosingPolicy="UNAVAILABLE">
+                    <Tab text="Geschäftlich">
+                        <LimitedTextArea fx:id="addressCompanyField" prefRowCount="5"/>
+                    </Tab>
+                    <Tab text="Lieferadresse">
+                        <LimitedTextArea fx:id="addressShippingField" prefRowCount="5"/>
+                    </Tab>
+                    <Tab text="Rechnungsadresse">
+                        <LimitedTextArea fx:id="addressBillingField" prefRowCount="5"/>
+                    </Tab>
+                    <Tab text="Privatadresse">
+                        <LimitedTextArea fx:id="addressPrivateField" prefRowCount="5"/>
+                    </Tab>
+                </TabPane>
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <Label text="Bemerkungen" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <LimitedTextArea fx:id="notesArea" maxHeight="Infinity" maxWidth="Infinity" GridPane.columnIndex="0"
+                                 GridPane.rowIndex="3"/>
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="Infinity"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints maxHeight="Infinity" vgrow="ALWAYS"/>
+                </rowConstraints>
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+            </GridPane>
+        </SplitPane>
+    </content>
 </DialogPane>

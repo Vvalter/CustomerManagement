@@ -6,7 +6,7 @@ import javafx.scene.control.TextFormatter;
 
 public class LimitedTextField extends TextField {
 
-    public LimitedTextField(@NamedArg("limit") int limit) {
+    public LimitedTextField(@NamedArg(value = "limit", defaultValue = "5000") int limit) {
         this.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= limit ? change : null));
     }

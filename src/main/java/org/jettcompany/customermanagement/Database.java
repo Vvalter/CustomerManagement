@@ -160,9 +160,11 @@ public class Database {
     private static void prepareStatement(PreparedStatement stmt, Customer customer) throws SQLException {
         int index = 1;
         stmt.setObject(index++, customer.getId());
+
         stmt.setString(index++, customer.getFilterProperties().getDivision().toString());
         stmt.setString(index++, customer.getFilterProperties().getCountry().toString());
         stmt.setString(index++, customer.getFilterProperties().getState().toString());
+        stmt.setString(index++, customer.getFilterProperties().getCity().getName());
 
         for (String columnName : Customer.stringColumnNames) {
             stmt.setString(index++, customer.getColumn(columnName));
@@ -211,13 +213,13 @@ public class Database {
     }
 
     public static void createTable() {
-        final int DEFAULT_LENGTH = 255;
+        final int DEFAULT_LENGTH = 5000;
         StringBuilder createQuery = new StringBuilder(
                 "CREATE TABLE customers ( " +
                         "id uuid NOT NULL PRIMARY KEY, ");
-        addVarchar(createQuery, Customer.COMPANY_DIVISION, DEFAULT_LENGTH);
-        addVarchar(createQuery, Customer.COUNTRY, DEFAULT_LENGTH);
-        addVarchar(createQuery, Customer.STATE, DEFAULT_LENGTH);
+        for (String filterProperty : Customer.filterPropertiesColumnNames) {
+            addVarchar(createQuery, filterProperty, DEFAULT_LENGTH);
+        }
 
         for (String columnName : Customer.stringColumnNames) {
             if (columnName.equals(Customer.NOTES)) {
@@ -226,7 +228,9 @@ public class Database {
                 addVarchar(createQuery, columnName, DEFAULT_LENGTH);
             }
         }
+        createQuery.deleteCharAt(createQuery.length()-1);
         createQuery.append(")");
+        logger.debug(createQuery.toString());
         executeUpdateStatement(getDBConnection(), createQuery.toString());
     }
 

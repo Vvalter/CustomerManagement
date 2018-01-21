@@ -91,6 +91,7 @@ public class CustomerOverviewController {
         setupFilterBindings();
 
         openFilterDialog(null);
+        updateButtonsEnabled();
     }
 
     @FXML

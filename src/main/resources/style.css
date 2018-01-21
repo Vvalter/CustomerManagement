@@ -1,0 +1,4 @@
+.tab-pane *.tab-header-background {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-color;
+    -fx-effect: null;
+}

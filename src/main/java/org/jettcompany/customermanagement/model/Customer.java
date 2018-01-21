@@ -42,14 +42,13 @@ public class Customer {
 
     public static final String UUID_COLUMN = "id";
 
-    public static final List<String> stringColumnNames = Collections.unmodifiableList(ImmutableList.of(COMPANY_NAME,
-            NAME, POSITION, NOTES, PRIMARY_EMAIL, EMAIL2, EMAIL3, TELEPHONE_COMPANY, TELEPHONE_PRIVATE,
-            TELEPHONE_MOBILE, PRIMARY_WEBSITE, WEBSITE2, WEBSITE3, ADDRESS_COMPANY, ADDRESS_SHIPPING,
-            ADDRESS_BILLING, ADDRESS_PRIVATE, PLACE_HOLDER, PLACE_HOLDER1, PLACE_HOLDER2, PLACE_HOLDER3,
-            PLACE_HOLDER4));
+    public static final List<String> stringColumnNames = ImmutableList.of(COMPANY_NAME, NAME, POSITION, NOTES,
+            PRIMARY_EMAIL, EMAIL2, EMAIL3, TELEPHONE_COMPANY, TELEPHONE_PRIVATE, TELEPHONE_MOBILE, PRIMARY_WEBSITE,
+            WEBSITE2, WEBSITE3, ADDRESS_COMPANY, ADDRESS_SHIPPING, ADDRESS_BILLING, ADDRESS_PRIVATE, PLACE_HOLDER,
+            PLACE_HOLDER1, PLACE_HOLDER2, PLACE_HOLDER3, PLACE_HOLDER4);
 
-    private static final List<String> filterPropertiesColumnNames = Collections.unmodifiableList(ImmutableList.of
-            (COMPANY_DIVISION, STATE, COUNTRY, CITY));
+    public static final List<String> filterPropertiesColumnNames = ImmutableList.of(COMPANY_DIVISION, STATE, COUNTRY,
+            CITY);
 
 
     private final UUID id;
