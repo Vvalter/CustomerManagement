@@ -83,7 +83,7 @@ public final class FilterProperties {
 
         City city1 = this.city.get();
         City city2 = other.city.get();
-        return city1.equals(city2) || city1.equals(City.any()) || city2.equals(City.any());
+        return city1.equals(city2) ||  city2.equals(City.any());
     }
 
     public City getCity() {

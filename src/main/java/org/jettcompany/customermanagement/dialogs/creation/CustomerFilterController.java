@@ -47,7 +47,7 @@ public class CustomerFilterController {
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
         updateFilter();
-        this.citiesTableView.setItems(new SortedList<>(this.displayedCityNames, Comparator.comparing(City::getName)));
+        this.citiesTableView.setItems(new SortedList<>(this.displayedCityNames, Comparator.comparing(City::getOrderedName)));
     }
 
     public void setFilterProperties(FilterProperties filterProperties) {
@@ -102,13 +102,15 @@ public class CustomerFilterController {
 
     private void updateFilter() {
         Set<City> matchingCities = new HashSet<>();
+        FilterProperties filterPropertiesWithoutCity = createFilterPropertiesFromFields();
+        filterPropertiesWithoutCity.setCity(City.any());
         for (Customer customer : this.customers) {
-            if (customer.getFilterProperties().matches(createFilterPropertiesFromFields())) {
+            if (customer.getFilterProperties().matches(filterPropertiesWithoutCity)) {
                 matchingCities.add(customer.getFilterProperties().getCity());
             }
         }
+        this.citySearchBar.setDisable(matchingCities.isEmpty());
         matchingCities.removeIf(this.searchFilter.negate());
         this.displayedCityNames.setAll(matchingCities);
     }
-
 }

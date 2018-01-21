@@ -62,7 +62,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        this.primaryStage.getIcons().add(new Image("file:res/CustomerIcon.png"));
+        this.primaryStage.getIcons().add(new Image("CustomerIcon.png"));
         this.primaryStage.setMaximized(true);
         this.primaryStage.setTitle("Kundenverwaltung");
         showCustomerOverview();

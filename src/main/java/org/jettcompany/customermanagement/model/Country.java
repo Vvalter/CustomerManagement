@@ -6,7 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.util.StringConverter;
 
 public enum Country {
-    ANY("beliebig"), GERMANY("Deutschland"), SWITZERLAND("Schweiz"), AUSTRIA("Österreich");
+    ANY("beliebig"), GERMANY("Deutschland"), SWITZERLAND("Schweiz"), AUSTRIA("\u00d6sterreich");
     private final String name;
 
     Country(String name) {

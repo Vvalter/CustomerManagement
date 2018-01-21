@@ -42,6 +42,6 @@ public class CustomerFilterDialog extends Dialog<FilterProperties> {
         setDialogPane(dialogPane);
         Stage stage = (Stage) getDialogPane().getScene().getWindow();
         stage.setTitle("Kundenverwaltung");
-        stage.getIcons().add(new Image("file:res/CustomerIcon.png"));
+        stage.getIcons().add(new Image("CustomerIcon.png"));
     }
 }

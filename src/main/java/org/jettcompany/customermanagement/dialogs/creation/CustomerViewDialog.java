@@ -47,7 +47,7 @@ public class CustomerViewDialog extends Dialog<Customer> {
         setDialogPane(dialogPane);
         Stage stage = (Stage) getDialogPane().getScene().getWindow();
         stage.setTitle("Visitenkarte");
-        stage.getIcons().add(new Image("file:res/CustomerIcon.png"));
+        stage.getIcons().add(new Image("CustomerIcon.png"));
         getDialogPane().getScene().getStylesheets().add("style.css");
     }
 }

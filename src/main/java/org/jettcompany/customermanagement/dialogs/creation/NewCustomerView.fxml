@@ -108,6 +108,7 @@
                 <rowConstraints>
                     <RowConstraints/>
                     <RowConstraints/>
+					<RowConstraints/>
                     <RowConstraints maxHeight="Infinity" vgrow="ALWAYS"/>
                 </rowConstraints>
                 <padding>

@@ -38,6 +38,14 @@ public class City {
         return this.name;
     }
 
+    public String getOrderedName() {
+        if (this.equals(any())) {
+            return "";
+        } else {
+            return getName();
+        }
+    }
+
     @Override
     public String toString() {
         return this.name;

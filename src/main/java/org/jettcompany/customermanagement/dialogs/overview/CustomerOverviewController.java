@@ -304,9 +304,9 @@ public class CustomerOverviewController {
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setTitle("Sicherheitsabfrage");
         confirmationDialog.setHeaderText("Soll \"" + customer.getColumn(Customer.COMPANY_NAME) + "\" wirklich " +
-                "gelöscht werden?");
+                "gel\u00f6scht werden?");
         Stage stage = (Stage) confirmationDialog.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image("file:res/CustomerIcon.png"));
+        stage.getIcons().add(new Image("CustomerIcon.png"));
         Optional<ButtonType> result = confirmationDialog.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }

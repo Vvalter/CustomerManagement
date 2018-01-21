@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DeutschlandController extends Group {
-
     @SuppressWarnings("unused")
     @FXML
     private Group stateGroup;
