@@ -70,6 +70,7 @@ public class Main extends Application {
     private void showCustomerOverview() throws IOException {
         Parent root = FXMLLoader.load(CustomerOverviewController.class.getResource("CustomerOverview.fxml"));
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
     }

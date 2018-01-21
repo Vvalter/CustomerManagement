@@ -47,8 +47,6 @@ public class CustomerViewController {
     @FXML
     private TextField phoneMobileField;
     @FXML
-    private TextField phoneFaxField;
-    @FXML
     private TextArea addressCompanyField;
     @FXML
     private TextArea addressShippingField;

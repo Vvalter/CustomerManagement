@@ -162,8 +162,8 @@ public class Database {
         stmt.setObject(index++, customer.getId());
 
         stmt.setString(index++, customer.getFilterProperties().getDivision().toString());
-        stmt.setString(index++, customer.getFilterProperties().getCountry().toString());
         stmt.setString(index++, customer.getFilterProperties().getState().toString());
+        stmt.setString(index++, customer.getFilterProperties().getCountry().toString());
         stmt.setString(index++, customer.getFilterProperties().getCity().getName());
 
         for (String columnName : Customer.stringColumnNames) {

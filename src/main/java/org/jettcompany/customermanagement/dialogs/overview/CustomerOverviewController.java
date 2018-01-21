@@ -100,8 +100,9 @@ public class CustomerOverviewController {
                 .map(customer -> customer.getFilterProperties().getCity())
                 .filter(city -> !city.getName().isEmpty())
                 .collect(Collectors.toSet());
-        ObservableList<City> argument = FXCollections.observableArrayList(cities);
-        CustomerFilterDialog dialog = new CustomerFilterDialog(this.currentFilterProperties.get(), argument);
+        ObservableList<City> observableCities = FXCollections.observableArrayList(cities);
+        logger.debug("Cities: " + observableCities);
+        CustomerFilterDialog dialog = new CustomerFilterDialog(this.currentFilterProperties.get(), observableCities);
         Optional<FilterProperties> result = dialog.showAndWait();
         logger.info(String.format("FilterDialog returned filter: %s", result));
         result.ifPresent(filterProperties -> this.currentFilterProperties.set(filterProperties));
@@ -301,7 +302,7 @@ public class CustomerOverviewController {
             String key = entry.getValue();
             column.setCellValueFactory(cellData -> cellData.getValue().getColumnProperty(key));
             column.setCellFactory(TextFieldTableCell.forTableColumn());
-            column.setText(key);
+//            column.setText(key);
         }
     }
 

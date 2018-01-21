@@ -73,9 +73,6 @@
                     <Tab text="Mobil">
                         <LimitedTextField fx:id="phoneMobileField"/>
                     </Tab>
-                    <Tab text="Fax">
-                        <LimitedTextField fx:id="phoneFaxField"/>
-                    </Tab>
                 </TabPane>
                 <columnConstraints>
                     <ColumnConstraints/>
