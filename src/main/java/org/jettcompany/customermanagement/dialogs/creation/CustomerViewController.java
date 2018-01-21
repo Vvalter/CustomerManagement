@@ -80,7 +80,7 @@ public class CustomerViewController {
 
                     @Override
                     public City fromString(String string) {
-                        return new City(string, selectionFilterProperties.getState());
+                        return City.get(string);
                     }
                 });
 
@@ -132,6 +132,6 @@ public class CustomerViewController {
         filterProperties.countryProperty().set(customer.getFilterProperties().getCountry());
         filterProperties.stateProperty().set(customer.getFilterProperties().getState());
         filterProperties.divisionProperty().set(customer.getFilterProperties().getDivision());
-        filterProperties.cityProperty().set(City.copyOf(customer.getFilterProperties().getCity()));
+        filterProperties.cityProperty().set(customer.getFilterProperties().getCity());
     }
 }

@@ -16,12 +16,6 @@ public class Database {
     private static final Logger logger = LogManager.getLogger(Database.class);
     private static final String DB_DRIVER = "org.h2.Driver";
 
-    private static City resultSetToCityString(ResultSet res) throws SQLException {
-        String city = res.getString(1);
-        State state = State.valueOf(res.getString(2));
-        return new City(city, state);
-    }
-
     public static boolean doesCustomerTableExist() {
         try {
             Connection connection = getDBConnection();
@@ -40,7 +34,7 @@ public class Database {
         Country country = Country.valueOf(res.getString(Customer.COUNTRY));
         State state = State.valueOf(res.getString(Customer.STATE));
         String cityName = res.getString(Customer.CITY);
-        FilterProperties filterProperties = new FilterProperties(division, country, state, new City(cityName, state));
+        FilterProperties filterProperties = new FilterProperties(division, country, state, City.get(cityName));
 
         Map<String, String> columnValues = new HashMap<>();
         for (String columnName : Customer.stringColumnNames) {
@@ -107,7 +101,7 @@ public class Database {
 
     public static List<City> fetchAllCities() {
         logger.info("Fetching all cities from database.");
-        String sql = String.format("SELECT %s,%s FROM customers", Customer.CITY, Customer.STATE);
+        String sql = String.format("SELECT %s FROM customers", Customer.CITY);
         Connection con = null;
         Statement stmt = null;
         ResultSet res = null;
@@ -118,7 +112,7 @@ public class Database {
             res = stmt.executeQuery(sql);
             result = new ArrayList<>();
             while (res.next()) {
-                result.add(resultSetToCityString(res));
+                result.add(City.get(res.getString(1)));
             }
         } catch (SQLException e) {
             logger.error("Error fetching cities from database.", e);

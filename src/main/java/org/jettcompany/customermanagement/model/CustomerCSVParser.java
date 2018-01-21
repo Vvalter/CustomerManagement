@@ -28,7 +28,7 @@ public class CustomerCSVParser {
             if (state.equals(State.ANY)) {
                 throw new RuntimeException();
             }
-            result.add(new City(csvRecord.get("ort"), state));
+            result.add(City.get(csvRecord.get("ort")));
         }
         return result;
     }
@@ -59,7 +59,7 @@ public class CustomerCSVParser {
             }
             if (i % CompanyDivision.values().length == 0) i = 1;
             FilterProperties filterProperties = new FilterProperties(CompanyDivision.values()[i % CompanyDivision
-                    .values().length], country, state, new City(csvRecord.get("addr:city"), state));
+                    .values().length], country, state, City.get(csvRecord.get("addr:city")));
             i++;
             Map<String, String> columnNames = ImmutableMap.of(
                     Customer.COMPANY_NAME, csvRecord.get("name"),

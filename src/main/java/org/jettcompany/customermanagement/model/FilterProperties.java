@@ -22,8 +22,7 @@ public final class FilterProperties {
     }
 
     public static FilterProperties copyOf(FilterProperties other) {
-        return new FilterProperties(other.getDivision(), other.getCountry(), other.getState(), City.copyOf(other
-                .getCity()));
+        return new FilterProperties(other.getDivision(), other.getCountry(), other.getState(), other.getCity());
     }
 
     public SimpleObjectProperty<City> cityProperty() {

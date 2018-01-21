@@ -1,23 +1,24 @@
 package org.jettcompany.customermanagement.model;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class City {
-    private static City anyCity = new City("beliebig", State.ANY);
+    private static final Map<String, City> instances = new HashMap<>();
     private String name;
-    private State state;
 
-    public City(String name, State state) {
+    private City(String name) {
         this.name = name;
-        this.state = state;
     }
 
-    public static City copyOf(City other) {
-        return new City(other.name, other.state);
+    public static City get(String cityName) {
+        instances.putIfAbsent(cityName, new City(cityName));
+        return instances.get(cityName);
     }
 
     public static City any() {
-        return anyCity;
+        return get("beliebig");
     }
 
     @Override
@@ -25,29 +26,16 @@ public class City {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         City city = (City) o;
-        return Objects.equals(this.name, city.name) &&
-                this.state == city.state;
+        return Objects.equals(this.name, city.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.name, this.state);
+        return Objects.hash(this.name);
     }
 
     public String getName() {
         return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public State getState() {
-        return this.state;
-    }
-
-    public void setState(State state) {
-        this.state = state;
     }
 
     @Override

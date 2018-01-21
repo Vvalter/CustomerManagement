@@ -14,6 +14,9 @@ import org.jettcompany.customermanagement.dialogs.stateselection.DeutschlandCont
 import org.jettcompany.customermanagement.model.*;
 
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
 public class CustomerFilterController {
@@ -36,16 +39,15 @@ public class CustomerFilterController {
     private ObjectProperty<CompanyDivision> selectedDivision = new SimpleObjectProperty<>(CompanyDivision.ANY);
     private ObjectProperty<City> selectedCity = new SimpleObjectProperty<>(City.any());
 
-    private FilteredList<City> filteredCities = new FilteredList<>(FXCollections.observableArrayList());
+    private List<Customer> customers;
+    private ObservableList<City> displayedCityNames = FXCollections.observableArrayList();
 
     private Predicate<City> searchFilter = city -> true;
-    private Predicate<City> stateFilter = city -> true;
-    private Predicate<City> countryFilter = city -> true;
 
-    public void setCities(ObservableList<City> cities) {
-        this.filteredCities = new FilteredList<>(cities);
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
         updateFilter();
-        this.citiesTableView.setItems(new SortedList<>(this.filteredCities, Comparator.comparing(City::getName)));
+        this.citiesTableView.setItems(new SortedList<>(this.displayedCityNames, Comparator.comparing(City::getName)));
     }
 
     public void setFilterProperties(FilterProperties filterProperties) {
@@ -71,7 +73,7 @@ public class CustomerFilterController {
         CompanyDivision.setupComboBox(this.divisionComboBox);
 
         setupBindings();
-        setupFilterBindings();
+        setupFilterUpdates();
     }
 
     private void setupBindings() {
@@ -83,28 +85,10 @@ public class CustomerFilterController {
         this.selectedCity.bind(this.citiesTableView.getSelectionModel().selectedItemProperty());
     }
 
-    private void setupFilterBindings() {
-        this.stateComboBox.valueProperty().addListener((observable, oldValue, newValue) -> setStateFilter(newValue));
-        this.countryComboBox.valueProperty().addListener(((observable, oldValue, newValue) -> setCountryFilter(newValue)));
+    private void setupFilterUpdates() {
+        this.stateComboBox.valueProperty().addListener((observable, oldValue, newValue) -> updateFilter());
+        this.countryComboBox.valueProperty().addListener(((observable, oldValue, newValue) -> updateFilter()));
         this.citySearchBar.textProperty().addListener(((observable, oldValue, newValue) -> setSearchFilter(newValue)));
-    }
-
-    private void setCountryFilter(Country country) {
-        if (country == null || country == Country.ANY) {
-            this.countryFilter = city -> true;
-        } else {
-            this.countryFilter = city -> city.getState().getCountry() == country;
-        }
-        updateFilter();
-    }
-
-    private void setStateFilter(State state) {
-        if (state == null || state == State.ANY) {
-            this.stateFilter = city -> true;
-        } else {
-            this.stateFilter = city -> city.getState() == state;
-        }
-        updateFilter();
     }
 
     private void setSearchFilter(String newValue) {
@@ -117,7 +101,14 @@ public class CustomerFilterController {
     }
 
     private void updateFilter() {
-        this.filteredCities.setPredicate(this.countryFilter.and(this.stateFilter.and(this.searchFilter)));
+        Set<City> matchingCities = new HashSet<>();
+        for (Customer customer : this.customers) {
+            if (customer.getFilterProperties().matches(createFilterPropertiesFromFields())) {
+                matchingCities.add(customer.getFilterProperties().getCity());
+            }
+        }
+        matchingCities.removeIf(this.searchFilter.negate());
+        this.displayedCityNames.setAll(matchingCities);
     }
 
 }

@@ -1,6 +1,5 @@
 package org.jettcompany.customermanagement.dialogs.creation;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
@@ -8,14 +7,15 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.jettcompany.customermanagement.model.City;
+import org.jettcompany.customermanagement.model.Customer;
 import org.jettcompany.customermanagement.model.FilterProperties;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CustomerFilterDialog extends Dialog<FilterProperties> {
 
-    public CustomerFilterDialog(FilterProperties init, ObservableList<City> cities) {
+    public CustomerFilterDialog(FilterProperties init, List<Customer> allCustomers) {
         DialogPane dialogPane;
         CustomerFilterController controller;
         try {
@@ -26,7 +26,7 @@ public class CustomerFilterDialog extends Dialog<FilterProperties> {
             return;
         }
 
-        controller.setCities(cities);
+        controller.setCustomers(allCustomers);
         controller.setFilterProperties(init);
 
         setResultConverter(buttonType -> {

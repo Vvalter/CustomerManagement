@@ -96,13 +96,7 @@ public class CustomerOverviewController {
 
     @FXML
     public void openFilterDialog(@SuppressWarnings("unused") ActionEvent unused) {
-        Set<City> cities = this.allCustomers.stream()
-                .map(customer -> customer.getFilterProperties().getCity())
-                .filter(city -> !city.getName().isEmpty())
-                .collect(Collectors.toSet());
-        ObservableList<City> observableCities = FXCollections.observableArrayList(cities);
-        logger.debug("Cities: " + observableCities);
-        CustomerFilterDialog dialog = new CustomerFilterDialog(this.currentFilterProperties.get(), observableCities);
+        CustomerFilterDialog dialog = new CustomerFilterDialog(this.currentFilterProperties.get(), this.allCustomers);
         Optional<FilterProperties> result = dialog.showAndWait();
         logger.info(String.format("FilterDialog returned filter: %s", result));
         result.ifPresent(filterProperties -> this.currentFilterProperties.set(filterProperties));
