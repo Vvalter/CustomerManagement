@@ -107,6 +107,8 @@ jfx {
     nativeReleaseVersion = "1.0"
     needShortcut = true
     needMenu = true
+    additionalAppResources = 'src/main/additional_resources'
+
     //appName = "Jett2" // this is used for files below "src/main/deploy", e.g. "src/main/deploy/package/windows/project.ico"
     fileAssociations = null // List<Map<String, Object>>
     noBlobSigning = false // when using bundler "jnlp", you can choose to NOT use blob signing

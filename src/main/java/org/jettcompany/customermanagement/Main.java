@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import org.jettcompany.customermanagement.dialogs.overview.CustomerOverviewController;
 import org.jettcompany.customermanagement.model.State;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
@@ -26,7 +27,7 @@ public class Main extends Application {
             ROOT_FOLDER = System.getenv(ROOT_FOLDER_KEY);
             if (ROOT_FOLDER == null) {
                 System.err.println("No environment variable was found either. Using default value.");
-                ROOT_FOLDER = System.getProperty("user.home") + "/Kundenverwaltung";
+                ROOT_FOLDER = System.getProperty("user.dir") + File.separator + "Daten";
             }
             System.setProperty(ROOT_FOLDER_KEY, ROOT_FOLDER);
         }

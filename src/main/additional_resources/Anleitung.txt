@@ -1,0 +1,12 @@
+Die Anwendung funktioniert ohne Installation. Alle notwendigen Dateien befinden sich in diesem Verzeichnis.
+Die Kundendaten werden ebenfalls in diesem Verzeichnis gespeichert. Genauer gesagt in dem Unterordner "app/Daten/db".
+Bei einer Datensicherung sollte also entweder dieses Verzeichnis komplett oder der Unterordner "app/Daten/db" gesichert werden.
+
+Es kann immer nur eine Programminstanz gleichzeitig gestartet werden. Ein paralleler Betrieb ist nicht möglich.
+
+Im Falle eines Fehlers befinden sich in dem Unterordner "app/Daten/log" Logdateien, die für die Fehlerfindung notwendig sind.
+Falls es im Betrieb zu Problemen kommt bitte ich um eine Email mit einer Beschreibung was passiert ist und den vollständigen Logdateien.
+
+Diese Software ist unter der Apache License 2.0 veröffentlicht. Eine vollständige Kopie der Lizenz liegt in der Datei LICENSE bei.
+Für eine kurze Übersicht über die Eigenschaften dieser Lizenz empfehle ich: https://de.wikipedia.org/wiki/Apache-Lizenz#Eigenschaften
+Kurz gesagt erlaubt diese Lizenz Jedermann die uneingeschränkte Nutzung, Veränderung und Verbreitung der Software solange diese Lizenz beibehalten wird.
