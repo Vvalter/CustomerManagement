@@ -294,9 +294,7 @@ public class CustomerOverviewController {
         for (Map.Entry<TableColumn<Customer, String>, String> entry : columnToKeyMap.entrySet()) {
             TableColumn<Customer, String> column = entry.getKey();
             String key = entry.getValue();
-            column.setCellValueFactory(cellData -> cellData.getValue().getColumnProperty(key));
-            column.setCellFactory(TextFieldTableCell.forTableColumn());
-//            column.setText(key);
+            column.setCellValueFactory(cellData -> cellData.getValue().getShortColumnProperty(key));
         }
     }
 

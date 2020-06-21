@@ -54,11 +54,12 @@ public class Customer {
     private final UUID id;
     private final FilterProperties filterProperties;
     private final Map<String, StringProperty> stringColumns;
+    private final Map<String, StringProperty> shortStringColumns;
 
     private Customer(UUID id, FilterProperties filterProperties, Map<String, String> columnValues) {
         this.id = id;
         this.filterProperties = filterProperties;
-        Map<String, StringProperty> temp = new HashMap<>();
+        final Map<String, StringProperty> temp = new HashMap<>();
         for (String key : columnValues.keySet()) {
             assert (stringColumnNames.contains(key));
         }
@@ -66,6 +67,21 @@ public class Customer {
             temp.put(key, new SimpleStringProperty(columnValues.getOrDefault(key, "")));
         }
         this.stringColumns = Collections.unmodifiableMap(temp);
+
+        final Map<String, StringProperty> temp2 = new HashMap<>();
+        for (String key : stringColumnNames) {
+            final String str = columnValues.getOrDefault(key, "");
+            int firstNewLine = str.indexOf('\n');
+            if (firstNewLine == -1) {
+                firstNewLine = str.length();
+            }
+            int firstCarriage = str.indexOf('\r');
+            if (firstCarriage == -1) {
+                firstCarriage = str.length();
+            }
+            temp2.put(key, new SimpleStringProperty(str.substring(0, Math.min(firstNewLine, firstCarriage))));
+        }
+        this.shortStringColumns = Collections.unmodifiableMap(temp2);
     }
 
     private Customer(FilterProperties filterProperties, Map<String, String> columnValues) {
@@ -107,6 +123,11 @@ public class Customer {
         return this.stringColumns;
     }
 
+    private Map<String, StringProperty> getShortStringColumns() {
+        return this.shortStringColumns;
+    }
+
+
     public String getColumn(String key) {
         return this.getStringColumns().get(key).getValue();
     }
@@ -115,8 +136,12 @@ public class Customer {
         return this.getStringColumns().get(key);
     }
 
+    public StringProperty getShortColumnProperty(String key) {
+        return this.getShortStringColumns().get(key);
+    }
+
     public String getSearchableText() {
-        String stringColumns = this.stringColumns.values().stream().map(StringExpression::getValue)
+        final String stringColumns = this.stringColumns.values().stream().map(StringExpression::getValue)
                 .collect(Collectors.joining());
         return this.filterProperties.getDivision().getName() + this.filterProperties.getCountry() + this
                 .filterProperties.getState().getName() + this.filterProperties.getCountry().getName() + stringColumns;
