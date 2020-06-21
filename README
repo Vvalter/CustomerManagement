@@ -1,0 +1,6 @@
+- Das gradle javafx plugin scheint nur Java 8 zu unterstützen
+- Man muss eine JDK verwenden die JavaFX dabei hat
+    - Auf Windows ist Oracle JDK das einfachste
+    - Unter Linux ist https://sdkman.io/ gut mit z.B. 8.0.252.fx-zulu
+- Gradle muss in Version 4.4.1 installiert sein
+- usePatchedJFXAntLib = false für Windows 10 mit JDK 1.8
