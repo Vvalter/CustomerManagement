@@ -19,6 +19,7 @@ buildscript {
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+compileJava.options.encoding = 'UTF-8'
 
 // Apply the application plugin to add support for building an application
 apply plugin: 'application'
