@@ -3,6 +3,15 @@ This is a simple customer management tool that I created or a local company. It 
 It then displays all saved customers in a tabular format.
 You can create new customers with a popup.
 
+##### Filter view
+![Filter customers by sector or location](/pictures/Filter.png)
+
+##### Tabluar customer view
+![See all customers](/pictures/Tabelle.png)
+
+##### Add new or change existing customer
+![Add new or change existing customer](/pictures/Visitenkarte.png)
+
 # Building
 - Requires Java 8 with JavaFX
 ```bash
