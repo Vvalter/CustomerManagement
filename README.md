@@ -1,6 +1,15 @@
-- Das gradle javafx plugin scheint nur Java 8 zu unterstützen
-- Man muss eine JDK verwenden die JavaFX dabei hat
-    - Auf Windows ist Oracle JDK das einfachste
-    - Unter Linux ist https://sdkman.io/ gut mit z.B. 8.0.252.fx-zulu
-- Gradle muss in Version 4.4.1 installiert sein
-- usePatchedJFXAntLib = false für Windows 10 mit JDK 1.8
+# Overview
+This is a simple customer management tool that I created or a local company. It allows you to create and manage customer information. At the start, you can select a filter by sector and state (using the interactive map on the right).
+It then displays all saved customers in a tabular format.
+You can create new customers with a popup.
+
+# Building
+- Requires Java 8 with JavaFX
+```bash
+wget 'https://cdn.azul.com/zulu/bin/zulu8.64.0.19-ca-fx-jdk8.0.345-linux_x64.tar.gz'
+tar xf zulu8.64.0.19-ca-fx-jdk8.0.345-linux_x64.tar.gz
+JAVA_HOME=<path>/zulu8.64.0.19-ca-fx-jdk8.0.345-linux_x64/ ./gradlew run
+```
+
+- On Windows, Oracle JDK is easiest to setup
+- usePatchedJFXAntLib = false for Windows 10 with JDK 1.8
